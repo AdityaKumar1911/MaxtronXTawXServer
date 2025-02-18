@@ -1,8 +1,10 @@
-const express = require('express');
-const { sendContactEmail } = require('../controllers/contactController');
+// routes/emailRoutes.js
+const express = require("express");
+const { sendEmail } = require("../controllers/contactController");
+
 const router = express.Router();
 
-// POST endpoint for the contact form
-router.post('/', sendContactEmail);
+// POST route to handle email sending
+router.post("/send-email", sendEmail);
 
 module.exports = router;
