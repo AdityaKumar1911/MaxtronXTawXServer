@@ -15,7 +15,7 @@ app.use(
     origin: [
       "http://localhost:5173", // Local development URL
       "https://maxtronev.com", // Production URL 1
-      "https://maxtronxtawxserver-1.onrender.com", // Production URL 2
+      "http://147.93.19.84:3000", // Production URL 2
     ],
   })
 );
