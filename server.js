@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const emailRoutes = require("./routes/contactRoutes");
 const dealerRoutes = require("./routes/dealerRoutes");
+const https = require("https");
+const fs = require("fs");
 
 const app = express();
 const port = 3000;
@@ -12,11 +14,8 @@ const port = 3000;
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // Local development URL
-      "https://maxtronev.com", // Production URL 1
-      "http://147.93.19.84:3000", // Production URL 2
-    ],
+    origin: "*", // All origins allowed, so multiple projects can call API
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
@@ -27,7 +26,13 @@ app.use(bodyParser.json());
 app.use("/api/email", emailRoutes);
 app.use("/api/dealer", dealerRoutes);
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+// HTTPS options - self-signed certificate
+const options = {
+  key: fs.readFileSync("/etc/ssl/selfsigned/server.key"),      // path to your key
+  cert: fs.readFileSync("/etc/ssl/selfsigned/server.crt"),     // path to your cert
+};
+
+// Start HTTPS server
+https.createServer(options, app).listen(port, () => {
+  console.log(`✅ HTTPS Server running at https://147.93.19.84:${port}`);
 });
