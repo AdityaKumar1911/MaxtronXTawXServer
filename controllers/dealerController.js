@@ -23,12 +23,13 @@ exports.submitDealerApplication = async (req, res) => {
   // Prepare the email content for the admin
   const adminMailOptions = {
     from: process.env.GMAIL_USER,
-    to: "maxtroninquiry@gmail.com", // Admin's email
+    to: "maxtronenquiry@gmail.com",
     cc: [
-      "shree@dynahitech.com",
+      "maxtroninquiry@dynahitech.com",
       "mayank@dynahitech.com",
       "Amitksaroha@dynahitech.com",
       "maxtroninquiry@dynahitech.com",
+      "Marketing@dynahitech.com",
     ],
     subject: "New Dealership Application",
     text: `A new dealership application has been submitted.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nBusiness Name: ${businessName}\nLocation: ${location}`,

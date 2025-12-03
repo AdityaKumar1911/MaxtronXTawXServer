@@ -22,13 +22,14 @@ const sendEmail = (req, res) => {
 
   // Admin email content
   const adminMailOptions = {
-    from: "maxtroninquiry@gmail.com",
-    to: "maxtroninquiry@gmail.com",
+    from: "maxtronenquiry@gmail.com",
+    to: "maxtronenquiry@gmail.com",
     cc: [
-      "shree@dynahitech.com",
+      "maxtroninquiry@dynahitech.com",
       "mayank@dynahitech.com",
       "Amitksaroha@dynahitech.com",
       "maxtroninquiry@dynahitech.com",
+      "Marketing@dynahitech.com",
     ],
     subject: "New Contact Form Submission from MaxtronEV",
     text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
