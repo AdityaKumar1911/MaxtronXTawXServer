@@ -14,10 +14,16 @@ const port = 3000;
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: "*", // All origins allowed, so multiple projects can call API
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    origin: [
+      "http://localhost:5173",
+      "https://maxtronev.com",
+      "https://behalf-sensors-groundwater-supplemental.trycloudflare.com"
+    ],
+    methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+    credentials: true,
   })
 );
+
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
